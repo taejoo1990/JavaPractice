@@ -1,0 +1,45 @@
+package pk18.HashMap;
+
+import java.util.HashMap;
+import java.util.Iterator;
+
+import pk17.Member;
+
+public class MemberHashMap {
+	
+	private HashMap<Integer, Member> hashMap;
+	
+	//construt
+	public MemberHashMap() {
+		hashMap=new HashMap<Integer,Member>();
+	}
+	public void addMember(Member member) {
+		hashMap.put(member.getMemberId(),member);
+	}
+
+	
+	public boolean removeMember(int memberId) {
+		
+		if(hashMap.containsKey(memberId)) {
+			hashMap.remove(memberId);
+			return true;
+		}
+		System.out.println(memberId+"가 존재하지 않습니다.");
+		return false;
+	}
+	
+	
+	public void showAllMember() {
+		Iterator<Integer> it=hashMap.keySet().iterator();
+		
+		//keySet() : 핵심키만 땔수있다
+		while(it.hasNext()) {
+			int key=it.next();//키만 저장
+			Member member=hashMap.get(key);
+			System.out.println(member);
+		}
+		System.out.println();
+	}
+	
+	
+}
